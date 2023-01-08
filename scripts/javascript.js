@@ -3,12 +3,16 @@ function carregar () {
     var img = document.querySelector('#image');
     var body = document.querySelector('#body');
 
+    var hour = document.querySelector('#ponteiro-hora');
+    var minute = document.querySelector('#ponteiro-minuto');
+    var second = document.querySelector('#ponteiro-segundo');
 
     var data = new Date();
     var hora = data.getHours();
     var minuto = data.getMinutes();
     var segundo = data.getSeconds();
 
+    //ROLOGIO DIGITAL
     var text_hora;
     var text_minuto;
     var text_segundo;
@@ -54,28 +58,17 @@ function carregar () {
         cumprimento.innerHTML = 'Boa noite!'
         body.style.background = 'url(./images/noite.webp)';
     }
+
+    //RELOGIO ANALOGICO
+    setRotation(hour, (360/12)  * hora);
+
+    setRotation(minute, (360/60)  * minuto);
+
+    setRotation(second, (360/60)  * segundo);
 }
-
-setInterval(carregar, 500);
-
-var hour = document.querySelector('#ponteiro-hora');
-var minute = document.querySelector('#ponteiro-minuto');
-var second = document.querySelector('#ponteiro-segundo');
 
 function setRotation(element, rotation){
     element.style.transform = `rotate(${rotation}deg)`
 }
 
-function setClock(){
-    var date = new Date();
-    
-    setRotation(hour, (360/12)  * date.getHours());
-
-    setRotation(minute, (360/60)  * date.getMinutes());
-
-    setRotation(second, (360/60)  * date.getSeconds());
-    
-}
-
-setInterval(setClock, 500)
-
+setInterval(carregar, 500);
