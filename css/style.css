@@ -32,7 +32,7 @@ header {
 }
 
 main {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     flex: 1;
     width: 100vw;
